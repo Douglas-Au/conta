@@ -1,15 +1,23 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import servico.*;
+
 public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        //Criar um banco
+        BancoService Banco = new BancoService();
+
+        //Cadastro de Cliente no Banco
+        Banco.cadastroConta("05250701256","Douglas Augusto de  Brito e Silva","0","1");
+        Banco.cadastroConta("05250701256","Douglas Augusto de  Brito e Silva","0","1");
+
+        //Checar Clientes
+        System.out.println(Banco);
+        Banco.depositarValor("0","1",900.55f);
+        System.out.println(Banco);
+
+        //Criar uma Conta Corrente para o Cliente
+        //Fazer um investimento
     }
 }

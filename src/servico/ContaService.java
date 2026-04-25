@@ -1,2 +1,4 @@
-package servico;public class ContaService {
+package servico;
+
+public class ContaService {
 }

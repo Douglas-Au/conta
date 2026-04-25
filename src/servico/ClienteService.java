@@ -26,7 +26,7 @@ public class ClienteService {
     }
 
     private boolean checaCPF(String cpf) {
-        //TODO
+        if (cpf.isEmpty()) return false;
         return true;
     }
 

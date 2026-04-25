@@ -1,9 +1,5 @@
 package servico;
-
-import entidade.Cliente;
-import entidade.Conta;
-import entidade.Corrente;
-
+import entidade.*;
 import java.util.ArrayList;
 
 public class BancoService {
@@ -36,6 +32,45 @@ public class BancoService {
 
     }
 
+    public boolean sacarValor(String agencia, String numero, float saque){
+        if(saque < 0){
+            //Valor não autorizado para saque
+            return false;
+        }
+        for(Cliente c: clientes) {
+            Conta conta = c.getConta();
+            if(conta.getAgencia().equals(agencia) && conta.getNumero().equals(numero)){
+                return conta.sacar(saque);
+            }
+        }
+        //Cliente não encontrado
+        return false;
+    }
+
+    public boolean depositarValor(String agencia, String numero, float deposito){
+        if(deposito < 0){
+            //Valor não autorizado para deposito
+            return false;
+        }
+        for(Cliente c: clientes) {
+            Conta conta = c.getConta();
+            if(conta.getAgencia().equals(agencia) && conta.getNumero().equals(numero)){
+                conta.depositar(deposito);
+                //deposito feito com sucesso
+                return true;
+            }
+        }
+        //Cliente não encontrado
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "BancoService{" +
+                "contas=" + contas +
+                ", clientes=" + clientes +
+                '}';
+    }
 
     public boolean sacarValor(Cliente cliente, float valor) {
         return cliente.getConta().sacar(valor);
